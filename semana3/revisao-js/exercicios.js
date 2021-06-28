@@ -20,22 +20,39 @@ function retornaNumerosParesElevadosADois(array) {
 }
 
 // EXERCÍCIO 03
-function retornaNumerosPares(array) {}
+function retornaNumerosPares(array) {
+  const novoArray3 = [];
+  array.filter((numero) => {
+    if (numero % 2 === 0) {
+      novoArray3.push(numero);
+    }
+  });
+  return novoArray3;
+}
 
 // EXERCÍCIO 04
-function retornaMaiorNumero(array) {}
+function retornaMaiorNumero(array) {
+
+}
 
 // EXERCÍCIO 05
-function retornaQuantidadeElementos(array) {}
+function retornaQuantidadeElementos(array) {
+
+}
 
 // EXERCÍCIO 06
-function retornaExpressoesBooleanas() {}
+function retornaExpressoesBooleanas() {
+
+}
 
 // EXERCÍCIO 07
-function retornaNNumerosPares(n) {}
+function retornaNNumerosPares(n) {
+
+}
 
 // EXERCÍCIO 08
 function checaTriangulo(a, b, c) {
+
   // return 'Escaleno'
   // return 'Equilátero'
   // return 'Isósceles'
@@ -49,7 +66,7 @@ function comparaDoisNumeros(num1, num2) {
   //   maiorDivisivelPorMenor: Y,
   //   diferenca: Z
   // }
-}
+ }
 
 // EXERCÍCIO 10
 function segundoMaiorEMenor(array) {}
