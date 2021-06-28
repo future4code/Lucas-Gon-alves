@@ -128,7 +128,18 @@ function segundoMaiorEMenor(array) {
 }
 
 // EXERCÍCIO 11
-function ordenaArray(array) {}
+function ordenaArray(array) {
+  for (let i = 0; i < array.length; i++) {
+    for (let l = 0; l < array.length; l++) {
+      if (array[l] > array[l + 1]) {
+        let temporario = array[l];
+        array[l] = array[l + 1];
+        array[l + 1] = temporario;
+      }
+    }
+  }
+  return array;
+}
 
 // EXERCÍCIO 12
 function filmeFavorito() {}
