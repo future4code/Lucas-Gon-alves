@@ -176,7 +176,15 @@ function criaRetangulo(lado1, lado2) {
 }
 
 // EXERCÍCIO 15
-function anonimizaPessoa(pessoa) {}
+function anonimizaPessoa(pessoa) {
+  const objPessoa = {
+    nome: "ANÔNIMO",
+    idade: pessoa.idade,
+    email: pessoa.email,
+    endereco: pessoa.endereco,
+  };
+  return objPessoa;
+}
 
 // EXERCÍCIO 16A
 function maioresDe18(arrayDePessoas) {}
