@@ -32,7 +32,13 @@ function retornaNumerosPares(array) {
 
 // EXERCÍCIO 04
 function retornaMaiorNumero(array) {
-
+  let maior = 0;
+  array.filter((numero) => {
+    if (numero > maior) {
+      maior = numero;
+    }
+  });
+  return maior;
 }
 
 // EXERCÍCIO 05
