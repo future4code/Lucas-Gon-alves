@@ -65,7 +65,17 @@ function retornaNNumerosPares(n) {
 
 // EXERCÍCIO 08
 function checaTriangulo(a, b, c) {
-
+  if (a === b && a === c && b === c) {
+    return "Equilátero";
+  } else if (
+    (a === b && a !== c) ||
+    (a === c && a !== b) ||
+    (b === c && b !== a)
+  ) {
+    return "Isósceles";
+  } else {
+    return "Escaleno";
+  }
   // return 'Escaleno'
   // return 'Equilátero'
   // return 'Isósceles'
