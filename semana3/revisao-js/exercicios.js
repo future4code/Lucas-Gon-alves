@@ -89,7 +89,26 @@ function comparaDoisNumeros(num1, num2) {
   //   maiorDivisivelPorMenor: Y,
   //   diferenca: Z
   // }
- }
+  const novoObjeto = {};
+  if (num1 > num2) {
+    novoObjeto.maiorNumero = num1;
+    if (novoObjeto.maiorNumero % num2 === 0) {
+      novoObjeto.maiorDivisivelPorMenor = true;
+    } else {
+      novoObjeto.maiorDivisivelPorMenor = false;
+    }
+    novoObjeto.diferenca = num1 - num2;
+  } else {
+    novoObjeto.maiorNumero = num2;
+    if (novoObjeto.maiorNumero % num1 === 0) {
+      novoObjeto.maiorDivisivelPorMenor = true;
+    } else {
+      novoObjeto.maiorDivisivelPorMenor = false;
+    }
+    novoObjeto.diferenca = num2 - num1;
+  }
+  return novoObjeto;
+}
 
 // EXERCÍCIO 10
 function segundoMaiorEMenor(array) {}
