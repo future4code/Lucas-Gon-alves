@@ -199,13 +199,26 @@ function menoresDe18(arrayDePessoas) {
 }
 
 // EXERCÍCIO 17A
-function multiplicaArrayPor2(array) {}
+function multiplicaArrayPor2(array) {
+  return array.map((numero) => numero * 2);
+}
 
 // EXERCÍCIO 17B
-function multiplicaArrayPor2S(array) {}
+function multiplicaArrayPor2S(array) {
+  return array.map((numero) => `${numero * 2}`);
+}
 
 // EXERCÍCIO 17C
-function verificaParidade(array) {}
+function verificaParidade(array) {
+  const paridade = array.map((numero) => {
+    if (numero % 2 === 0) {
+      return `${numero} é par`;
+    } else {
+      return `${numero} é ímpar`;
+    }
+  });
+  return paridade;
+}
 
 // EXERCÍCIO 18A
 function retornaPessoasAutorizadas(pessoas) {}
