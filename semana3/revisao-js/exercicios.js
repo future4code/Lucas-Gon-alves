@@ -111,7 +111,21 @@ function comparaDoisNumeros(num1, num2) {
 }
 
 // EXERCÍCIO 10
-function segundoMaiorEMenor(array) {}
+function segundoMaiorEMenor(array) {
+  const novoArray5 = [];
+  for (let i = 0; i < array.length; i++) {
+    for (let l = 0; l < array.length; l++) {
+      if (array[l] > array[l + 1]) {
+        let temporario = array[l];
+        array[l] = array[l + 1];
+        array[l + 1] = temporario;
+      }
+    }
+  }
+  novoArray5.push(array[array.length - 2]);
+  novoArray5.push(array[1]);
+  return novoArray5;
+}
 
 // EXERCÍCIO 11
 function ordenaArray(array) {}
