@@ -54,7 +54,13 @@ function retornaExpressoesBooleanas() {
 
 // EXERCÍCIO 07
 function retornaNNumerosPares(n) {
-
+  const novoArray4 = [];
+  for (let i = 0; i < n * 2; i++) {
+    if (i % 2 === 0) {
+      novoArray4.push(i);
+    }
+  }
+  return novoArray4;
 }
 
 // EXERCÍCIO 08
