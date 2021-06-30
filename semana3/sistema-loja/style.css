@@ -1,0 +1,138 @@
+/* Configurações globais */
+body {
+  background: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+  text-align: center;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+u {
+  text-decoration: underline;
+  color: #f44336;
+}
+
+.texto-vermelho {
+  color: #f44336;
+}
+
+header {
+  margin-bottom: 30px;
+}
+
+header p, header h1 {
+  font-size: 48px;
+  margin: 20px;
+}
+
+.menu a {
+  background-color: #f44336;
+  color: aliceblue;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+footer {
+  background: #f44336;
+  color: white;
+}
+
+footer p {
+  font-size: 20px;
+  padding-top: 15px;
+}
+
+/* Página inicial */
+.banner {
+  display: flex;
+  justify-content: center;
+}
+
+.banner p {
+  display: none;
+}
+
+.banner img {
+  width: 200px;
+}
+
+.banner img:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+/* Ícones de redes sociais */
+.icones img {
+  width: 50px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+/* Tabela do controle de estoque */
+.tabela {
+  margin: auto;
+}
+
+.tabela img {
+  width: 100px;
+}
+
+.tabela td,
+.tabela th {
+  text-align: center;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.tabela th {
+  background: #ddd;
+}
+
+/* Adicionar Produto */
+.form {
+  margin: auto;
+}
+
+.form input {
+  padding: 5px;
+}
+
+.form-add button,
+.comprar {
+  margin-top: 15px;
+  border: none;
+  background-color: #f44336;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* Funcionários */
+ul li {
+  list-style: none;
+  display: flex;
+  
+}
+
+.poke {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.poke h3 {
+  margin-top: 0;
+}
+
+.poke img {
+  width: 220px;
+}
+
+
+

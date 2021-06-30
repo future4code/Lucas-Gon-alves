@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./style.css">
+  <title>Pokéshop</title>
+</head>
+
+<body>
+  <header>
+    <p>Poké<span class="texto-vermelho">shop</span></p>
+    <nav class="menu">
+      <a href="./index.html">Página Inicial</a>
+      <a href="./ctrl-estoque.html">Controle de Estoque</a>
+      <a href="./add-produto.html">Adicionar Produto</a>
+      <a href="./funcionarios.html">Funcionários</a>
+      <a href="./historico.html">Histórico de Vendas</a>
+    </nav>
+    <h2>$<span class="texto-vermelho">$</span>$ Vendas $<span class="texto-vermelho">$</span>$</h2>
+  </header>
+
+  <main>
+    <table class="form">
+      <form action="#">
+        <tr>
+          <td><label for="produto">Produto:</label></td>
+          <td><input type="text" id="produto" name="produto"></td>
+        </tr>
+
+        <tr>
+          <td><label for="quantidade">Quantidade:</label></td>
+          <!-- Adicione o id apropriado para o input abaixo -->
+          <td><input type="number" id="quantidade" name="quantidade"></td>
+        </tr>
+
+        <tr>
+          <td>Forma de Pagamento:</td>
+          <td>
+            <label for="dinheiro"><input type="radio" id="dinheiro" name="din_cart">Dinheiro</label>
+            <label for="cartao"><input type="radio" id="cartao" name="din_cart">Cartão</label>
+          </td>
+        </tr>
+    </table>
+    <div class="form-add">
+      <!-- Adicione ao type do botão abaixo o valor para que ele submeta o formulário -->
+      <button type="submit">COMPRAR!!!</button>
+    </div>
+    </form>
+  </main>
+
+  <footer>
+    <p>Siga-nos nas redes sociais!</p>
+    <div class="icones">
+      <img src="https://image.flaticon.com/icons/png/512/25/25305.png" />
+      <img src="https://image.flaticon.com/icons/png/512/25/25425.png" />
+      <img src="https://image.flaticon.com/icons/png/512/8/8800.png" />
+    </div>
+  </footer>
+</body>
+
+</html>
