@@ -1,0 +1,151 @@
+/* Configurações Globais */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: aliceblue;
+  color: #333;
+  line-height: 1.5;
+  letter-spacing: 0.3px;
+}
+
+.container {
+  width: 70%;
+  margin: auto;
+  font-size: 1.1rem;
+}
+
+h2 {
+  text-align: center;
+}
+
+.sub {
+  border-bottom: 3px solid #8dcaff;
+}
+
+h3 .sub {
+  border-bottom: 1px solid #8dcaff;
+}
+
+hr {
+  width: 80%;
+  border-color: #A6E1FA;
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+/* Header - Cabeçalho */
+
+header h1 {
+  text-align: center;
+}
+
+/* Header - Menu */
+
+#menu ul {
+  padding: 0px;
+  margin: 0px;
+  background-color: aliceblue;
+  list-style: none;
+  text-align: center;
+}
+
+#menu ul li {
+  display: inline;
+}
+
+#menu ul li a {
+  padding: 2px 10px;
+  display: inline-block;
+  background-color: #8dcaff;
+  color: #333;
+  text-decoration: none;
+  border-bottom: 3px solid #8dcaff;
+}
+
+#menu ul li a:hover {
+  background-color: aliceblue;
+  color: #333;
+  border-bottom:3px solid #8dcaff;
+}
+
+/* Section - Galeria de Projetos */
+
+.flexbox {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.flexbox .flex-item {
+  height: 500px;
+  width: 70%;
+  background: #8dcaff;
+  margin: 10px;
+}
+
+.flexbox .flex-item:hover {
+  opacity: 0.8;
+}
+
+.flexbox #item-1 {
+  background: url(../img/pokeshop.PNG) no-repeat center;
+}
+
+/* Section - Contato */
+
+#contato {
+  text-align: center;
+}
+
+#contato .flexbox {
+  flex-direction: column;
+}
+
+#contato .flexbox input,
+#contato .flexbox textarea {
+  width: 50%;
+  padding: 10px 20px;
+  margin: 10px auto;
+  font-size: 1.2rem;
+  border: 2px solid #A6E1FA;
+}
+
+#contato .flexbox button {
+  width: 10%;
+  padding: 10px 20px;
+  margin: 20px auto 0px auto;
+  border: none;
+  background: #8dcaff;
+  color: #333;
+  font-size: 1.2rem;
+}
+
+#contato .flexbox button:hover {
+  background: #001C55;
+  color: aliceblue;
+}
+
+/* Footer - Minhas Redes */
+
+footer ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+}
+
+footer ul a {
+  color: #8dcaff;
+  margin-right: 35px;
+}
+
+footer ul a:hover {
+  color: #001C55;
+}
+
+footer .final {
+  background: #8dcaff;
+  text-align: center;
+  margin-top: 20px;
+}
