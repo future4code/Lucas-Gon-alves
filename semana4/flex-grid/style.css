@@ -1,0 +1,92 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: 50px 1fr 40px;
+}
+
+.logo img,
+.lado img {
+  width: 20px;
+  height: 20px;
+  margin-right: 20px;
+}
+
+header {
+  grid-row: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid red;
+  padding: 15px 10px;
+  background-color: mediumvioletred;
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  border: 1px solid green;
+}
+
+main .lado {
+  grid-column: 1;
+  background-color: #f2d0e0;
+  padding: 15px 10px;
+}
+
+main .lado .item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+}
+
+main .lado .item .item-interno {
+  display: flex;
+  align-items: center;
+}
+
+main .produtos {
+  grid-column: 2;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px 20px 0 20px;
+}
+
+main .produtos .produto {
+  display: flex;
+  flex-direction: column;
+  width: 260px;
+  margin: 0 20px 20px 0;
+  box-shadow: 5px 5px 3px 0px rgba(169,169,169,1);
+}
+
+main .produtos .produto .produto-interno {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+main .produtos .produto .produto-interno h2 {
+  margin: 10px 0;
+}
+
+main .produtos .produto .produto-interno p {
+  text-align: center;
+  margin: 0 0 10px 0;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  background-color: mediumvioletred;
+}
