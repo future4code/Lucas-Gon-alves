@@ -1,0 +1,123 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: 90px 1fr 80px;
+  font-family: "Roboto", sans-serif;
+  color: #ff6600;
+}
+
+header {
+  grid-row: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: #1d1e1c;
+}
+
+header .logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: #ff6600;
+}
+
+header .logo:hover {
+  color: #ffb650;
+}
+
+header .logo i {
+  margin-right: 20px;
+}
+
+header .input {
+  margin-right: 40px;
+  display: flex;
+  align-items: center;
+}
+
+header .input i:hover {
+  color: #ffb650;
+  cursor: pointer;
+}
+
+header .pesquisar {
+  width: 100px;
+  padding: 10px;
+  margin: 20px;
+}
+
+main {
+  grid-row: 2;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 20px;
+  background-color: #1d1e1c;
+}
+
+main .card {
+  width: 270px;
+  height: 270px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  box-shadow: 2px 3px 5px lightgray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #ff6600;
+}
+
+main .card:hover {
+  /* color: #ffb650; */
+  opacity: 0.8;
+}
+
+main .imagem {
+  width: 270px;
+}
+
+main h3 {
+  margin: auto;
+  font-size: 1.2rem;
+}
+
+footer {
+  grid-row: 3;
+  background: #1d1e1c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer p {
+  font-size: 1.5rem;
+}
+
+/* Video */
+
+.principal-video {
+  background-color: #1d1e1c;
+}
+
+main .video {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+main .video h2 {
+  margin-top: 0;
+}
+
+main .video video {
+  width: 90vw;
+  height: 650px;
+}
