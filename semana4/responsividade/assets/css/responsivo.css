@@ -1,0 +1,27 @@
+@media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  body {
+    height: 100vh;
+  }
+
+  header {
+    justify-content: center;
+  }
+
+  header .input {
+    display: none;
+  }
+
+  main .card {
+    margin: 0 0 25px 0;
+    width: 90vw;
+    padding-bottom: 50px;
+  }
+
+  main h3 {
+    padding-top: 40px;
+  }
+
+  main .card img {
+    width: 90vw;
+  }
+}
