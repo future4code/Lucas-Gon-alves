@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import CardGrande from './components/CardGrande/CardGrande';
 import ImagemButton from './components/ImagemButton/ImagemButton';
+import CardPequeno from './components/CardPequeno/CardPequeno';
 
 function App() {
   return (
@@ -9,14 +10,26 @@ function App() {
       <div className="page-section-container">
         <h2>Dados pessoais</h2>
         <CardGrande 
-          imagem="https://uploads-ssl.webflow.com/5d640f4558306be99cf47a0e/5dd57846babb597b77c6bb1d_PerfilFuture4_cor.png" 
-          nome="Astrodev" 
-          descricao="Oi, eu sou o Astrodev. Sou o chefe dos alunos da Labenu. Adoro pedir e-mails na sexta-feira e esperar os alunos responderem só para responder com uma bronca e dar mais trabalho para eles."
+          imagem="https://lh3.googleusercontent.com/ogw/ADea4I7xr4pEKfZL2aEGEs13JKh4eDdenktjjFonUgF4mg=s83-c-mo" 
+          nome="Lucas" 
+          descricao="Oi, eu sou o Lucas. Sou um dos alunos da Labenu. Adoro praticar exercícios de javascript mesmo sem entender muito sobre. Atualmente aprendendo a mexer com React."
         />
         
         <ImagemButton 
           imagem="https://image.flaticon.com/icons/png/512/117/117472.png" 
           texto="Ver mais"
+        />
+
+        <CardPequeno
+          imagem="https://image.flaticon.com/icons/png/512/747/747314.png"
+          item="E-mail:"
+          conteudo="bananinha-amassadinha@gmail.com"
+        />
+
+        <CardPequeno
+          imagem="https://img-premium.flaticon.com/png/512/1287/premium/1287899.png?token=exp=1626198482~hmac=f15dfe7c7e9b86d788f5734d68a36e5c"
+          item="Endereço:"
+          conteudo="Av. Logo Ali, 21"
         />
       </div>
 
@@ -25,13 +38,13 @@ function App() {
         <CardGrande 
           imagem="https://s3.amazonaws.com/future4.com.br/static/headf4-c492117ca2373dc85ca81bf715b3dc2a.png" 
           nome="Labenu" 
-          descricao="Formando desenvolvedores para o mercado de trabalho!" 
+          descricao="Me formando como um desenvolvedor web." 
         />
         
         <CardGrande 
           imagem="https://imagens.canaltech.com.br/empresas/4418.400.jpg" 
           nome="NASA" 
-          descricao="Apontando defeitos." 
+          descricao="Astronauta freelancer." 
         />
       </div>
 
