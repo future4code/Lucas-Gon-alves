@@ -1,0 +1,5 @@
+IconeComContador
+    icone
+    onClickIcone
+    valorContador
+- São as props do componente "IconeComContador". Vêm do componente e vão para o componente "Post".
