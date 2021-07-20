@@ -1,6 +1,6 @@
 import React from "react";
 
-export class PerguntaAberta extends React.Component {
+export default class PerguntaAberta extends React.Component {
   render() {
     return (
       <div>

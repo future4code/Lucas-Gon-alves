@@ -1,16 +1,16 @@
 import React from "react";
-import Etapa1 from "./components/Etapa1";
-import Etapa2 from "./components/Etapa2";
-import Etapa3 from "./components/Etapa3";
-import Final from "./components/Final";
-import { GlobalStyle, Container } from "./components/Estilos";
+import { GlobalStyle } from "./App.styles";
+import Etapa1 from "./components/Etapas/Etapa1";
+import Etapa2 from "./components/Etapas/Etapa2";
+import Etapa3 from "./components/Etapas/Etapa3";
+import Final from "./components/Etapas/Final";
 
 export default class App extends React.Component {
   state = {
     etapa: 1,
   };
 
-  renderizaEtapa = () => {
+  renderizarEtapa = () => {
     switch (this.state.etapa) {
       case 1:
         return <Etapa1 />;
@@ -21,14 +21,13 @@ export default class App extends React.Component {
       case 4:
         return <Final />;
       default:
-        return "Erro";
+        return "Erro 404";
     }
   };
 
-  irParaProximaEtapa = (novaEtapa) => {
-    novaEtapa = this.state.etapa + 1;
+  irParaProximaEtapa = () => {
     this.setState({
-      etapa: novaEtapa,
+      etapa: this.state.etapa + 1,
     });
   };
 
@@ -36,13 +35,11 @@ export default class App extends React.Component {
     return (
       <div>
         <GlobalStyle />
-        <Container>
-          <h1>LabenuForms</h1>
-          {this.renderizaEtapa()}
-          {this.state.etapa < 4 && (
-            <button onClick={this.irParaProximaEtapa}>Próxima Etapa</button>
-          )}
-        </Container>
+        <h1>LabenuForm</h1>
+        {this.renderizarEtapa()}
+        {this.state.etapa < 4 && (
+          <button onClick={this.irParaProximaEtapa}>Próxima Etapa</button>
+        )}
       </div>
     );
   }

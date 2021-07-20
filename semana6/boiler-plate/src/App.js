@@ -22,29 +22,63 @@ class App extends React.Component {
   state = {
     tarefas: [
       {
-        id: Date.now(),
+        id: 1,
         texto: "Preparar o almoço",
         completa: false,
       },
       {
-        id: Date.now(),
+        id: 2,
         texto: "Almoçar",
-        completa: true,
+        completa: false,
       },
     ],
     inputValue: "",
     filtro: "",
   };
 
-  componentDidUpdate() {}
+  componentDidUpdate(prevPros, prevState) {
+    localStorage.setItem("tarefas", JSON.stringify(this.state.tarefas));
+  }
 
-  componentDidMount() {}
+  componentDidMount() {
+    const novasTarefas = JSON.parse(localStorage.getItem("tarefas"));
 
-  onChangeInput = (event) => {};
+    this.setState({
+      tarefas: novasTarefas,
+    });
+  }
 
-  criaTarefa = () => {};
+  onChangeInput = (event) => {
+    this.setState({ inputValue: event.target.value });
+  };
 
-  selectTarefa = (id) => {};
+  criaTarefa = () => {
+    const novaTarefa = {
+      id: Date.now(),
+      texto: this.state.inputValue,
+      completa: false,
+    };
+
+    const copiaDasTarefas = [...this.state.tarefas, novaTarefa];
+
+    this.setState({ tarefas: copiaDasTarefas, inputValue: "" });
+  };
+
+  selectTarefa = (id) => {
+    const copiaDasTarefas = this.state.tarefas.map((tarefa) => {
+      if (id === tarefa.id) {
+        const newTarefa = {
+          ...tarefa,
+          completa: !tarefa.completa,
+        };
+        return newTarefa;
+      } else {
+        return tarefa;
+      }
+    });
+
+    this.setState({ tarefas: copiaDasTarefas });
+  };
 
   onChangeFilter = (event) => {};
 
