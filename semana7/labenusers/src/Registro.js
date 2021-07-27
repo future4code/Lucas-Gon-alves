@@ -5,7 +5,7 @@ const InputContainer = styled.label`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-bottom: 16px;
+  margin: 16px 0;
 
   input {
     padding: 4px;
@@ -25,14 +25,18 @@ export default class Registro extends React.Component {
   render() {
     return (
       <div>
+        <button onClick={this.props.goToList}>Ir para a lista</button>
         <InputContainer>
           Nome:
           <input value={this.props.name} onChange={this.props.onChangeName} />
         </InputContainer>
+        <InputContainer>
+          Email:
+          <input value={this.props.email} onChange={this.props.onChangeEmail} />
+        </InputContainer>
 
         <ButtonContainer>
-          <button onClick={this.props.criarUser}>Salvar</button>
-          <button>Ir para a lista</button>
+          <button onClick={this.props.onAddNameToList}>Salvar</button>
         </ButtonContainer>
       </div>
     );

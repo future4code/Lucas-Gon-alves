@@ -3,15 +3,12 @@ import styled from "styled-components";
 
 const ListContainer = styled.div`
   h3 {
-    /* margin-top: 0; */
     display: flex;
     flex-direction: column;
   }
 
   button {
-    display: inline-block;
-    margin-top: 16px;
-    padding: 4px 8px;
+    padding: 1px 6px;
   }
 `;
 
@@ -37,17 +34,19 @@ export default class Lista extends React.Component {
   render() {
     return (
       <ListContainer>
-        <h3>Usuários Cadastrados:</h3>
-        {this.props.users.map((user) => {
+        <button onClick={this.props.goToReg}>Ir para o registro</button>
+        <h3>Usuários Cadastrados</h3>
+        {this.props.nameList.map((user, index) => {
           return (
-            <NameList key={user.id}>
+            <NameList key={index}>
               <p>{user.name}</p>
-              <i class="far fa-trash-alt"></i>
+              <i
+                onClick={() => this.props.onRemoveNameList(user.id)}
+                class="far fa-trash-alt"
+              ></i>
             </NameList>
           );
         })}
-
-        <button>Ir para o registro</button>
       </ListContainer>
     );
   }
