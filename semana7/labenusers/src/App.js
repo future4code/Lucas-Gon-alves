@@ -1,6 +1,25 @@
 import React from "react";
 import TelaCadastro from "./components/TelaCadastro";
 import TelaListaUsuario from "./components/TelaListaUsuario";
+import styled, { createGlobalStyle } from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
+  * {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  body {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    padding: 5rem;
+  }
+`;
+
+const AppContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 export default class App extends React.Component {
   state = {
@@ -23,6 +42,11 @@ export default class App extends React.Component {
   irParaLista = () => this.setState({ telaAtual: "lista" });
 
   render() {
-    return <div>{this.escolheTela()}</div>;
+    return (
+      <AppContainer>
+        <GlobalStyle />
+        {this.escolheTela()}
+      </AppContainer>
+    );
   }
 }

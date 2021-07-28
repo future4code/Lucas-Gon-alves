@@ -2,13 +2,31 @@ import axios from "axios";
 import React from "react";
 import styled from "styled-components";
 
+const ListaContainer = styled.div`
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+
+  button {
+    padding: 4px;
+    font-size: 0.9rem;
+    display: inline-block;
+    max-width: 150px;
+    margin: 0 auto;
+  }
+`;
+
 const CardUsuario = styled.div`
   border-bottom: 1px solid black;
-  padding: 10px;
-  margin: 10px;
-  width: 250px;
+  margin: 0 10px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+
+  p {
+    cursor: pointer;
+  }
 `;
 
 export default class TelaListaUsuario extends React.Component {
@@ -56,18 +74,17 @@ export default class TelaListaUsuario extends React.Component {
     const listaUsuarios = this.state.usuarios.map((user) => {
       return (
         <CardUsuario key={user.id}>
-          {user.name}{" "}
-          <button onClick={() => this.deletarUsuario(user.id)}>X</button>
+          {user.name} <p onClick={() => this.deletarUsuario(user.id)}>X</p>
         </CardUsuario>
       );
     });
 
     return (
-      <div>
+      <ListaContainer>
         <button onClick={this.props.irParaCadastro}>Ir para Cadastro</button>
         <h2>Lista de Usuários</h2>
         {listaUsuarios}
-      </div>
+      </ListaContainer>
     );
   }
 }
