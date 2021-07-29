@@ -1,5 +1,29 @@
 import axios from "axios";
 import React from "react";
+import styled from "styled-components";
+
+const CadastroContainer = styled.div`
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+
+  button {
+    padding: 4px;
+    font-size: 0.9rem;
+    display: inline-block;
+    max-width: 150px;
+    margin: 1rem auto;
+  }
+
+  input {
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    border: none;
+    border-bottom: 1px solid black;
+    font-size: 1rem;
+  }
+`;
 
 export default class TelaCadastro extends React.Component {
   state = {
@@ -37,7 +61,7 @@ export default class TelaCadastro extends React.Component {
 
   render() {
     return (
-      <div>
+      <CadastroContainer>
         <button onClick={this.props.irParaLista}>
           Ir para a Lista de Usuários
         </button>
@@ -53,7 +77,7 @@ export default class TelaCadastro extends React.Component {
           onChange={this.handleEmail}
         />
         <button onClick={this.fazerCadastro}>Cadastrar</button>
-      </div>
+      </CadastroContainer>
     );
   }
 }
