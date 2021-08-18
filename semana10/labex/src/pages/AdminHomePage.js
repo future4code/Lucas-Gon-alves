@@ -1,4 +1,5 @@
 import { useHistory } from "react-router";
+import useGetAllTrips from "../hooks/useGetAllTrips";
 import styled from "styled-components";
 
 const AdmingHomePageContainer = styled.div`
@@ -17,14 +18,14 @@ const GridContainer = styled.div`
 
 const AdminHomePage = () => {
   const history = useHistory();
+  const tripList = useGetAllTrips();
 
   const createTrip = () => history.push("/admin/trips/create");
+
   const doLogout = () => {
     // Lógica do logout e endirecionamento para página de login.
+    localStorage.removeItem("token");
     history.replace("/login");
-  };
-  const checkDetails = () => {
-    history.push(`/admin/trips/:id`);
   };
 
   return (
@@ -35,11 +36,18 @@ const AdminHomePage = () => {
         <button onClick={doLogout}>Logout</button>
       </div>
       <GridContainer>
-        <div id="1" onClick={checkDetails}>
-          A
-        </div>
-        <div onClick={checkDetails}>B</div>
-        <div onClick={checkDetails}>C</div>
+        {tripList.map((trip, index) => {
+          return (
+            <div
+              style={{ border: "1px solid black" }}
+              key={index}
+              id={trip.id}
+              onClick={() => history.push(`/admin/trips/${trip.id}`)}
+            >
+              <p>{trip.name}</p> <span>X</span>
+            </div>
+          );
+        })}
       </GridContainer>
     </AdmingHomePageContainer>
   );

@@ -1,4 +1,5 @@
 import { useHistory } from "react-router-dom";
+
 import styled from "styled-components";
 
 const GridContainer = styled.div`
@@ -6,7 +7,6 @@ const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 `;
-
 const TripDetailsContainer = styled.div`
   padding: 5rem;
   display: flex;
@@ -15,7 +15,6 @@ const TripDetailsContainer = styled.div`
   border-right: 5px solid black;
   height: calc(100vh - 80.625px);
 `;
-
 const CandidatesContainer = styled.div`
   padding: 5rem;
   display: flex;

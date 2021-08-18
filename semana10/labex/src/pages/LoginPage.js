@@ -1,3 +1,5 @@
+import axios from "axios";
+import { useState } from "react";
 import { useHistory } from "react-router";
 import styled from "styled-components";
 
@@ -20,18 +22,48 @@ const FormContainer = styled.div`
 
 const LoginPage = () => {
   const history = useHistory();
-  const sendLogin = () => {
-    // Lógica do envio do login e senha e direcionamento para a página de administrador.
-    history.push("/admin/trips/list");
+  const [userEmail, setUserEmail] = useState("");
+  const [userPassword, setUserPassword] = useState("");
+
+  const onSubmitLogin = () => {
+    console.log(userEmail, userPassword);
+    const body = {
+      email: userEmail,
+      password: userPassword,
+    };
+
+    axios
+      .post(
+        "https://us-central1-labenu-apis.cloudfunctions.net/labeX/darvas/login",
+        body
+      )
+      .then((response) => {
+        console.log("Deu certo: ", response.data.token);
+        localStorage.setItem("token", response.data.token);
+        history.push("/admin/trips/list");
+      })
+      .catch((error) => {
+        console.log("Deu errado: ", error.response);
+      });
   };
 
   return (
     <LoginPageContainer>
       <h1>Login</h1>
       <FormContainer>
-        <input type="text" />
-        <input type="text" />
-        <button onClick={sendLogin}>Entrar</button>
+        <input
+          value={userEmail}
+          onChange={(e) => setUserEmail(e.target.value)}
+          type="text"
+          placeholder="E-mail"
+        />
+        <input
+          value={userPassword}
+          onChange={(e) => setUserPassword(e.target.value)}
+          type="password"
+          placeholder="Senha"
+        />
+        <button onClick={onSubmitLogin}>Entrar</button>
       </FormContainer>
     </LoginPageContainer>
   );

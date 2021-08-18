@@ -1,5 +1,4 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-
 import { GlobalStyle } from "./GlobalStyles";
 import Header from "./components/Header";
 import HomePage from "./pages/HomePage";
