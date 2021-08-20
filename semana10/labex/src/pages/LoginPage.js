@@ -34,7 +34,8 @@ const LoginPage = () => {
 
     axios
       .post(
-        "https://us-central1-labenu-apis.cloudfunctions.net/labeX/darvas/login",
+        "https://us-central1-labenu-apis.cloudfunctions.net/labeX/lucas-fernandes/login",
+
         body
       )
       .then((response) => {
@@ -70,3 +71,7 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
+
+// devzito@gmail.com
+// 123456
+// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IkQ0UFZCdm8yRHVoTDJhOEx5STExIiwiZW1haWwiOiJkZXZ6aXRvQGdtYWlsLmNvbSIsImlhdCI6MTYyOTMyNDUzOH0.-KaVcj6vCGIjBMhoojZbPckGhIPNJCGfl2fz8zZS878

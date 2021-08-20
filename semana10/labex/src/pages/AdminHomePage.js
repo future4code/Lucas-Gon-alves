@@ -16,6 +16,22 @@ const GridContainer = styled.div`
   gap: 20px;
 `;
 
+const CardContainer = styled.div`
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+
+  span {
+    padding: 1rem 0 1rem 1rem;
+    font-weight: bolder;
+    :hover {
+      color: red;
+    }
+  }
+`;
+
 const AdminHomePage = () => {
   const history = useHistory();
   const tripList = useGetAllTrips();
@@ -37,15 +53,18 @@ const AdminHomePage = () => {
       </div>
       <GridContainer>
         {tripList.map((trip, index) => {
+          const sendToTripDetails = () => {
+            localStorage.setItem("id", trip.id);
+            history.push(`/admin/trips/${trip.id}`);
+          };
           return (
-            <div
+            <CardContainer
               style={{ border: "1px solid black" }}
               key={index}
               id={trip.id}
-              onClick={() => history.push(`/admin/trips/${trip.id}`)}
             >
-              <p>{trip.name}</p> <span>X</span>
-            </div>
+              <p onClick={sendToTripDetails}>{trip.name}</p> <span>X</span>
+            </CardContainer>
           );
         })}
       </GridContainer>
