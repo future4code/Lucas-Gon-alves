@@ -1,5 +1,13 @@
+import Main from "./components/Main/Main";
+import ResetButton from "./components/ResetButton/ResetButton";
+
 const App = () => {
-  return <div>Hello World</div>;
+  return (
+    <div>
+      <Main />
+      <ResetButton />
+    </div>
+  );
 };
 
 export default App;
