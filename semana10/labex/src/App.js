@@ -1,42 +1,46 @@
-import { GlobalStyle } from "./GlobalStyles";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Header from "./components/Header";
 import HomePage from "./pages/HomePage";
-import ListTripsPage from "./pages/ListTripsPage";
 import ApplicationFormPage from "./pages/ApplicationFormPage";
-import LoginPage from "./pages/LoginPage";
-import AdmingHomePage from "./pages/AdminHomePage";
 import CreateTripPage from "./pages/CreateTripPage";
-import TripDetailsPage from "./pages/TripDetailsPage";
+import TripsListPage from "./pages/TripsListPage";
+import TripDetailPage from "./pages/TripDetailPage";
+import LoginPage from "./pages/LoginPage";
+import styled from "styled-components";
+import { CssBaseline } from "@material-ui/core";
+
+const AppContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+`;
 
 const App = () => {
   return (
     <BrowserRouter>
-      <GlobalStyle />
-      <Header />
-      <Switch>
-        <Route exact path="/">
-          <HomePage />
-        </Route>
-        <Route path="/list/trips">
-          <ListTripsPage />
-        </Route>
-        <Route path="/trips/application">
-          <ApplicationFormPage />
-        </Route>
-        <Route path="/login">
-          <LoginPage />
-        </Route>
-        <Route path="/admin/trips/list">
-          <AdmingHomePage />
-        </Route>
-        <Route path="/admin/trips/create">
-          <CreateTripPage />
-        </Route>
-        <Route exact path="/admin/trips/:id">
-          <TripDetailsPage />
-        </Route>
-      </Switch>
+      <CssBaseline />
+      <AppContainer>
+        <Switch>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
+          <Route exact path="/inscricao">
+            <ApplicationFormPage />
+          </Route>
+          <Route exact path="/viagens/criar">
+            <CreateTripPage />
+          </Route>
+          <Route exact path="/viagens">
+            <TripsListPage />
+          </Route>
+          <Route exact path="/viagens/detalhe/:tripId">
+            <TripDetailPage />
+          </Route>
+          <Route exact path="/login">
+            <LoginPage />
+          </Route>
+        </Switch>
+      </AppContainer>
     </BrowserRouter>
   );
 };
