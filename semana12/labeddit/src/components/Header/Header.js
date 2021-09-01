@@ -4,8 +4,23 @@ import { StyledToolbar } from "./styled";
 import { goToPostList, goToLogin } from "../../routes/coordinator";
 import { useHistory } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ rightButtonText, setRightButtonText }) => {
+  const token = localStorage.getItem("token");
   const history = useHistory();
+
+  const logout = () => {
+    localStorage.removeItem("token");
+  };
+
+  const rightButtonAction = () => {
+    if (token) {
+      logout();
+      setRightButtonText("Login");
+      goToLogin(history);
+    } else {
+      goToLogin(history);
+    }
+  };
 
   return (
     <AppBar position="static">
@@ -17,12 +32,8 @@ const Header = () => {
         >
           LabEddit
         </Button>
-        <Button
-          onClick={() => goToLogin(history)}
-          color="inherit"
-          variant="outlined"
-        >
-          Login
+        <Button onClick={rightButtonAction} color="inherit" variant="outlined">
+          {rightButtonText}
         </Button>
       </StyledToolbar>
     </AppBar>

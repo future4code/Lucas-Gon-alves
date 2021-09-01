@@ -5,7 +5,7 @@ import useForm from "../../hooks/useForm";
 import { signUp } from "../../services/user";
 import { InputsContainer, SignUpFormContainer } from "./styled";
 
-const SignUpForm = () => {
+const SignUpForm = ({ setRightButtonText }) => {
   const history = useHistory();
   const [form, onChange, clear] = useForm({
     name: "",
@@ -16,7 +16,7 @@ const SignUpForm = () => {
   const onSubmitForm = (e) => {
     e.preventDefault();
     console.log(form);
-    signUp(form, clear, history);
+    signUp(form, clear, history, setRightButtonText);
   };
 
   return (
