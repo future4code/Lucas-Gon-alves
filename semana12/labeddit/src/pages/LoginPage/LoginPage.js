@@ -4,8 +4,10 @@ import { Button } from "@material-ui/core";
 import LoginForm from "./LoginForm";
 import { useHistory } from "react-router";
 import { goToSignUp } from "../../routes/coordinator";
+import useUnprotectedPage from "../../hooks/useUnProtectedPage";
 
 const LoginPage = () => {
+  useUnprotectedPage();
   const history = useHistory();
   return (
     <ScreenContainer>

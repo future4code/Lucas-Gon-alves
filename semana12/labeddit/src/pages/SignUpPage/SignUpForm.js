@@ -1,23 +1,39 @@
 import React from "react";
-import { InputsContainer, LoginFormContainer } from "./styled";
 import { Button, TextField } from "@material-ui/core";
-import useForm from "../../hooks/useForm";
-import { login } from "../../services/user";
 import { useHistory } from "react-router-dom";
+import useForm from "../../hooks/useForm";
+import { signUp } from "../../services/user";
+import { InputsContainer, SignUpFormContainer } from "./styled";
 
-const LoginForm = () => {
-  const [form, onChange, clear] = useForm({ email: "", password: "" });
+const SignUpForm = () => {
   const history = useHistory();
+  const [form, onChange, clear] = useForm({
+    name: "",
+    email: "",
+    password: "",
+  });
 
   const onSubmitForm = (e) => {
     e.preventDefault();
-    login(form, clear, history);
+    console.log(form);
+    signUp(form, clear, history);
   };
 
   return (
     <form onSubmit={onSubmitForm}>
-      <LoginFormContainer>
+      <SignUpFormContainer>
         <InputsContainer>
+          <TextField
+            value={form.name}
+            name={"name"}
+            onChange={onChange}
+            label={"Nome"}
+            varitant={"outlined"}
+            fullWidth
+            required
+            autoFocus
+            margin={"normal"}
+          />
           <TextField
             value={form.email}
             name={"email"}
@@ -34,7 +50,7 @@ const LoginForm = () => {
             value={form.password}
             name={"password"}
             onChange={onChange}
-            label={"Senha"}
+            label={"Senha - Apenas Números"}
             varitant={"outlined"}
             fullWidth
             required
@@ -44,16 +60,16 @@ const LoginForm = () => {
           />
         </InputsContainer>
         <Button
+          color={"primary"}
+          variant={"contained"}
           type={"submit"}
           fullWidth
-          variant={"contained"}
-          color={"primary"}
         >
-          Login
+          Fazer Cadastro
         </Button>
-      </LoginFormContainer>
+      </SignUpFormContainer>
     </form>
   );
 };
 
-export default LoginForm;
+export default SignUpForm;
