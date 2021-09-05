@@ -8,45 +8,42 @@ import {
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 
-const CommentListItem = ({
-  comment,
-  handleCommentVote,
-  changeCommentVote,
-  deleteCommentVote,
-}) => {
+const CommentListItem = (props) => {
   const handleUpVote = () => {
-    if (comment.userVote === -1) {
-      changeCommentVote(comment.id, 1);
-    } else if (comment.userVote === 1) {
-      deleteCommentVote(comment.id);
+    if (props.comment.userVote === -1) {
+      props.changeCommentVote(props.comment.id, 1);
+    } else if (props.comment.userVote === 1) {
+      props.deleteCommentVote(props.comment.id);
     } else {
-      handleCommentVote(comment.id, 1);
+      props.handleCommentVote(props.comment.id, 1);
     }
   };
 
   const handleDownVote = () => {
-    if (comment.userVote === 1) {
-      changeCommentVote(comment.id, -1);
-    } else if (comment.userVote === -1) {
-      deleteCommentVote(comment.id);
+    if (props.comment.userVote === 1) {
+      props.changeCommentVote(props.comment.id, -1);
+    } else if (props.comment.userVote === -1) {
+      props.deleteCommentVote(props.comment.id);
     } else {
-      handleCommentVote(comment.id, -1);
+      props.handleCommentVote(props.comment.id, -1);
     }
   };
 
   return (
-    <ListItem>
-      <ListItemText primary={"Fulado de Tal"} secondary={comment.body} />
+    <ListItem style={{ width: "300px" }}>
+      <ListItemText primary={props.comment.body} secondary={"Fulado de Tal"} />
       <ListItemSecondaryAction>
         <IconButton edge="end" onClick={handleUpVote}>
           <ArrowUpwardIcon
-            color={comment.userVote === 1 ? "secondary" : "disabled"}
+            color={props.comment.userVote === 1 ? "secondary" : "disabled"}
           />
         </IconButton>
-        <span>{comment.voteSum === null ? "0" : comment.voteSum}</span>
+        <span style={{ marginLeft: "10px" }}>
+          {props.comment.voteSum === null ? "0" : props.comment.voteSum}
+        </span>
         <IconButton edge="end" onClick={handleDownVote}>
           <ArrowDownwardIcon
-            color={comment.userVote === -1 ? "primary" : "disabled"}
+            color={props.comment.userVote === -1 ? "primary" : "disabled"}
           />
         </IconButton>
       </ListItemSecondaryAction>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
+  Avatar,
   Button,
   Container,
   CssBaseline,
@@ -11,6 +12,15 @@ import {
 import { useHistory } from "react-router";
 import { baseUrl } from "../constants";
 import axios from "axios";
+import FaceIcon from "@material-ui/icons/Face";
+import styled from "styled-components";
+
+const HeaderCenter = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px;
+`;
 
 const SignupPage = () => {
   const [username, setUsername] = useState("");
@@ -20,11 +30,9 @@ const SignupPage = () => {
 
   useEffect(() => {
     if (localStorage.getItem("token") !== null) {
-      history.push("/feed");
+      history.push("/");
     }
   }, []);
-
-  // TODO: UNIFICAR ESSAS FUNÇÕES
 
   const handleGoToLogin = () => {
     history.push("/login");
@@ -54,7 +62,7 @@ const SignupPage = () => {
       .then((res) => {
         console.log(res);
         localStorage.setItem("token", res.data.token);
-        history.push("/feed");
+        history.push("/");
       })
       .catch((err) => console.log(err.response));
   };
@@ -63,9 +71,14 @@ const SignupPage = () => {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div>
-        <Typography component="h1" variant="h5">
-          Cadastrar
-        </Typography>
+        <HeaderCenter>
+          <Avatar style={{ backgroundColor: "transparent" }} variant={"circle"}>
+            <FaceIcon color={"primary"} fontSize={"large"} />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Cadastrar
+          </Typography>
+        </HeaderCenter>
         <form onSubmit={handleSignup}>
           <TextField
             variant="outlined"
@@ -108,7 +121,7 @@ const SignupPage = () => {
           />
 
           <Button type="submit" fullWidth variant="contained" color="primary">
-            Logar
+            Cadastrar
           </Button>
           <Grid container>
             <Grid item>

@@ -20,17 +20,29 @@ const PostCard = (props) => {
   };
 
   const handleUpVote = () => {
-    props.createPostVote(props.post.id, 1);
+    if (props.post.userVote === 1) {
+      props.deleteVotePost(props.post.id);
+    } else if (props.post.userVote === -1) {
+      props.changeVotePost(props.post.id, 1);
+    } else {
+      props.createVotePost(props.post.id, 1);
+    }
   };
 
   const handleDownVote = () => {
-    props.createPostVote(props.post.id, -1);
+    if (props.post.userVote === -1) {
+      props.deleteVotePost(props.post.id);
+    } else if (props.post.userVote === 1) {
+      props.changeVotePost(props.post.id, -1);
+    } else {
+      props.createVotePost(props.post.id, -1);
+    }
   };
 
   return (
-    <Card>
+    <Card style={{ width: "300px" }}>
       <CardHeader
-        avatar={<Avatar>R</Avatar>}
+        avatar={<Avatar>L</Avatar>}
         title={props.post.title}
         subheader={props.post.username}
       />
@@ -42,18 +54,17 @@ const PostCard = (props) => {
       <CardActions disableSpacing>
         <IconButton onClick={handleUpVote}>
           <ArrowUpwardIcon
-            color={props.post.userVoteDirection === 1 ? "primary" : "disabled"}
+            color={props.post.userVote === 1 ? "primary" : "disabled"}
           />
         </IconButton>
-        <Typography>{props.post.voteSum}</Typography>
+        <Typography>
+          {props.post.voteSum === null ? "0" : props.post.voteSum}
+        </Typography>
         <IconButton onClick={handleDownVote}>
           <ArrowDownwardIcon
-            color={
-              props.post.userVoteDirection === -1 ? "secondary" : "disabled"
-            }
+            color={props.post.userVote === -1 ? "secondary" : "disabled"}
           />
         </IconButton>
-        <span>{props.post.votesCount}</span>
         {!props.hideComment && (
           <Button
             variant="outlined"

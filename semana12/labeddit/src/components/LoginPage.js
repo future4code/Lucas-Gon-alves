@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 import { baseUrl } from "../constants";
 import axios from "axios";
 import {
@@ -11,8 +12,15 @@ import {
   TextField,
   Typography,
 } from "@material-ui/core";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { useHistory } from "react-router";
+
+const HeaderCenter = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px;
+`;
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -21,7 +29,7 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (localStorage.getItem("token") !== null) {
-      history.push("/feed");
+      history.push("/");
     }
   }, []);
 
@@ -51,7 +59,7 @@ const LoginPage = () => {
 
       localStorage.setItem("token", response.data.token);
 
-      history.push("/feed");
+      history.push("/");
     } catch (error) {
       alert("Erro ao logar :(");
       console.error(error);
@@ -62,12 +70,14 @@ const LoginPage = () => {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div>
-        <Avatar>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Logar
-        </Typography>
+        <HeaderCenter>
+          <Avatar style={{ backgroundColor: "transparent" }}>
+            <ExitToAppIcon color={"primary"} fontSize={"large"} />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Logar
+          </Typography>
+        </HeaderCenter>
         <form onSubmit={handleLogin}>
           <TextField
             variant="outlined"

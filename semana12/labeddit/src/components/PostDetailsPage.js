@@ -1,55 +1,59 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { useHistory, useParams } from "react-router";
-import { baseUrl } from "../constants";
-import PostCard from "./PostCard";
 import {
   Button,
-  IconButton,
+  CircularProgress,
+  Divider,
   List,
-  ListItem,
-  ListItemSecondaryAction,
-  ListItemText,
   TextField,
-  Typography,
 } from "@material-ui/core";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useHistory, useParams } from "react-router";
+import styled from "styled-components";
+import { baseUrl } from "../constants";
 import CommentListItem from "./CommentListItem";
 
-const PostDetailsPage = (props) => {
+const ListWrapper = styled.div`
+  display: grid;
+  gap: 20px;
+  justify-items: center;
+`;
+
+const PostDetailsPage = () => {
   const [postDetails, setPostDetails] = useState(null);
   const [newComment, setNewComment] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const params = useParams();
   const history = useHistory();
 
   useEffect(() => {
     if (!params.postId) {
-      history.push("/feed");
+      history.push("/");
     } else if (localStorage.getItem("token") === null) {
       history.push("/login");
     }
   }, []);
 
   useEffect(() => {
-    fecthPostDetails();
+    fetchPostDetail();
   }, []);
 
-  const fecthPostDetails = () => {
+  const fetchPostDetail = () => {
     const axiosConfig = {
       headers: {
         Authorization: localStorage.getItem("token"),
       },
     };
+    setIsLoading(true);
     axios
       .get(`${baseUrl}/posts/${params.postId}/comments`, axiosConfig)
       .then((res) => {
         setPostDetails(res.data);
+        setIsLoading(false);
       })
       .catch((err) => console.log(err));
   };
 
-  const handleUpdateComment = (e) => {
-    setNewComment(e.target.value);
-  };
+  const handleUpdateComment = (e) => setNewComment(e.target.value);
 
   const handleCreateComment = () => {
     const axiosConfig = {
@@ -65,7 +69,7 @@ const PostDetailsPage = (props) => {
       .post(`${baseUrl}/posts/${params.postId}/comments`, body, axiosConfig)
       .then((res) => {
         setNewComment("");
-        fecthPostDetails();
+        fetchPostDetail();
       })
       .catch((err) => {
         alert("Não foi possível comentar.");
@@ -86,7 +90,7 @@ const PostDetailsPage = (props) => {
     axios
       .post(`${baseUrl}/comments/${commentId}/votes`, body, axiosConfig)
       .then((res) => {
-        fecthPostDetails();
+        fetchPostDetail();
       })
       .catch((err) => {
         alert("Não foi possível votar no comentário");
@@ -106,7 +110,7 @@ const PostDetailsPage = (props) => {
     axios
       .put(`${baseUrl}/comments/${commentId}/votes`, body, axiosConfig)
       .then((res) => {
-        fecthPostDetails();
+        fetchPostDetail();
       })
       .catch((err) => {
         alert("Não foi possível alterar o voto no comentário");
@@ -123,7 +127,7 @@ const PostDetailsPage = (props) => {
     axios
       .delete(`${baseUrl}/comments/${commentId}/votes`, axiosConfig)
       .then((res) => {
-        fecthPostDetails();
+        fetchPostDetail();
       })
       .catch((err) => {
         alert("Não foi possível apagar o voto no comentário.");
@@ -131,21 +135,35 @@ const PostDetailsPage = (props) => {
   };
 
   return (
-    <div>
-      {postDetails !== null && <PostCard post={postDetails} hideComment />}
+    <ListWrapper>
+      <Button
+        color={"primary"}
+        variant={"text"}
+        onClick={() => history.goBack()}
+      >
+        Voltar
+      </Button>
 
       <TextField
+        margin={"dense"}
+        variant={"outlined"}
         placeholder={"Seu Comentário"}
         value={newComment}
         onChange={handleUpdateComment}
       />
 
-      <Button onClick={handleCreateComment}>Enviar Comentário</Button>
+      <Button variant={"outlined"} onClick={handleCreateComment}>
+        Enviar Comentário
+      </Button>
+
+      <Divider />
 
       <List>
+        {isLoading && <CircularProgress />}
         {postDetails &&
           postDetails.map((comment) => (
             <CommentListItem
+              key={comment.id}
               comment={comment}
               handleCommentVote={handleCommentVote}
               changeCommentVote={changeCommentVote}
@@ -153,7 +171,7 @@ const PostDetailsPage = (props) => {
             />
           ))}
       </List>
-    </div>
+    </ListWrapper>
   );
 };
 
