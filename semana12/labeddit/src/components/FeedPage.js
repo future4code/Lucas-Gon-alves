@@ -12,9 +12,7 @@ const FeedWrapper = styled.div`
   justify-items: center;
 `;
 
-const FeedPage = () => {
-  const [posts, setPosts] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+const FeedPage = ({ isLoading, posts, fetchPosts }) => {
   const history = useHistory();
 
   useEffect(() => {
@@ -23,31 +21,33 @@ const FeedPage = () => {
     }
   }, []);
 
-  useEffect(() => {
+  const createPostVote = (postId, direction) => {
     const axiosConfig = {
       headers: {
         Authorization: localStorage.getItem("token"),
       },
     };
-    setIsLoading(true);
+    const body = {
+      direction: direction,
+    };
+
     axios
-      .get(`${baseUrl}/posts`, axiosConfig)
+      .post(`${baseUrl}/posts/${postId}/votes`, body, axiosConfig)
       .then((res) => {
-        console.log(res.data);
-        setPosts(res.data);
-        setIsLoading(false);
+        fetchPosts();
       })
       .catch((err) => {
-        console.log(err);
+        alert("Não foi possível votar em uma postagem");
       });
-  }, []);
+  };
 
   return (
     <FeedWrapper>
       {isLoading && <CircularProgress />}
-      {posts.map((post) => (
-        <PostCard key={post.id} post={post} />
-      ))}
+      {posts &&
+        posts.map((post) => (
+          <PostCard key={post.id} post={post} createPostVote={createPostVote} />
+        ))}
     </FeedWrapper>
   );
 };

@@ -20,11 +20,11 @@ const PostCard = (props) => {
   };
 
   const handleUpVote = () => {
-    props.handleVotePost(props.post.id, 1);
+    props.createPostVote(props.post.id, 1);
   };
 
   const handleDownVote = () => {
-    props.handleVotePost(props.post.id, -1);
+    props.createPostVote(props.post.id, -1);
   };
 
   return (
