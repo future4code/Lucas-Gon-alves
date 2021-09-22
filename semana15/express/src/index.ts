@@ -70,3 +70,16 @@ app.get("/countries/search", (req: Request, res: Response) => {
     res.status(400).send({ message: error.message });
   }
 });
+
+// Exercício 4
+app.put("/countries/:id", (req: Request, res: Response) => {
+  try {
+    if (!Number(req.params.id)) {
+      throw new Error("ID inválido");
+    }
+    const { name, capital } = req.body;
+    res.status(200).send({ name, capital });
+  } catch (error: any) {
+    res.status(400).send({ message: error.message });
+  }
+});
