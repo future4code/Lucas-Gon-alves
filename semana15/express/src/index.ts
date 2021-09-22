@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
 import { AddressInfo } from "net";
+import { countries } from "./data";
 
 const app = express();
 
@@ -14,4 +15,10 @@ const server = app.listen(process.env.PORT || 3003, () => {
   } else {
     console.error(`Failure upon starting server.`);
   }
+});
+
+// Exercício 1
+
+app.get("/countries", (req: Request, res: Response) => {
+  res.status(200).send(countries);
 });
