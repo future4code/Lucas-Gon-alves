@@ -9,7 +9,7 @@ type User = {
   age: number;
 };
 
-const users = [
+const users: User[] = [
   {
     id: 1,
     name: "Alice",
@@ -57,6 +57,20 @@ const users = [
 const app = express();
 app.use(express.json());
 app.use(cors());
+
+// Exercício 1
+app.get("/users", (req: Request, res: Response) => {
+  let codeError = 400;
+  try {
+    res.status(200).send(users);
+  } catch (error: any) {
+    res.status(codeError).send({ message: error.message });
+  }
+});
+/*
+a) Usária o método GET.
+b) "/users"
+*/
 
 app.listen(3003, () => {
   console.log("Server is running at port 3003");
