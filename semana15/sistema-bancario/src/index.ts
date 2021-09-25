@@ -1,69 +1,62 @@
-import express, { Request, Response } from "express";
+import express, { Express, Request, Response } from "express";
 import cors from "cors";
+import { accounts } from "./account";
 
-type User = {
-  id: number;
-  name: string;
-  email: string;
-  type: string;
-  age: number;
-};
+const app: Express = express();
 
-// Mock simulando um array de usuários no Banco de Dados
-let users: User[] = [
-  {
-    id: 1,
-    name: "Alice",
-    email: "alice@email.com",
-    type: "ADMIN",
-    age: 12,
-  },
-  {
-    id: 2,
-    name: "Bob",
-    email: "bob@email.com",
-    type: "NORMAL",
-    age: 36,
-  },
-  {
-    id: 3,
-    name: "Coragem",
-    email: "coragem@email.com",
-    type: "NORMAL",
-    age: 21,
-  },
-  {
-    id: 4,
-    name: "Dory",
-    email: "dory@email.com",
-    type: "NORMAL",
-    age: 17,
-  },
-  {
-    id: 5,
-    name: "Elsa",
-    email: "elsa@email.com",
-    type: "ADMIN",
-    age: 17,
-  },
-  {
-    id: 6,
-    name: "Fred",
-    email: "fred@email.com",
-    type: "ADMIN",
-    age: 60,
-  },
-];
-
-const app = express();
 app.use(express.json());
 app.use(cors());
 
-// Para testar se o servidor está tratando os endpoints corretamente
-app.get("/ping", (req: Request, res: Response) => {
-  res.status(200).send("pong!");
+app.get("/users/all", (req: Request, res: Response) => {
+  try {
+    if (accounts.length == 0) {
+      res.statusCode = 404;
+      throw new Error("Nenhuma conta encontrada");
+    }
+    res.status(200).send(accounts);
+  } catch (error: any) {
+    res.send(error.message);
+  }
+});
+
+app.post("/users", (req: Request, res: Response) => {
+  try {
+    const { name, CPF, dateOfBirthAsString } = req.body;
+
+    const [day, month, year] = dateOfBirthAsString.split("/");
+
+    const dateOfBirth: Date = new Date(`${year}-${month}-${day}`);
+
+    // Validar as entradas da requisição.
+    const ageInMilisseconds: number = Date.now() - dateOfBirth.getTime();
+
+    const ageInYears: number = ageInMilisseconds / 1000 / 60 / 60 / 24 / 365;
+
+    if (ageInYears < 18) {
+      res.statusCode = 406;
+      throw new Error("A idade deve ser maior que 18 anos.");
+    }
+
+    // Consultar ou alterar a base de dados.
+
+    accounts.push({
+      name,
+      CPF,
+      dateOfBirth,
+      balance: 0,
+      statement: [],
+    });
+
+    // Validar os resultados da consulta.
+
+    // Enviar a resposta.
+    res.status(201).send("Conta criada com sucesso.");
+  } catch (error: any) {
+    console.log(error);
+    res.send(error.message);
+  }
 });
 
 app.listen(3003, () => {
-  console.log("Server is running at port 3003");
+  console.log("Servidor rodando na porta 3003");
 });
