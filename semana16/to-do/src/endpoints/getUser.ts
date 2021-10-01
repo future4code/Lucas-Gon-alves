@@ -1,14 +1,21 @@
 import { Request, Response } from "express";
+import selectUser from "../data/selectUser";
 
-const createUser = async (req: Request, res: Response) => {
+const getUser = async (req: Request, res: Response) => {
   try {
-    // Validar entradas da requisição.
     // Consultar o banco de dados.
+    const user = await selectUser(req.params.id);
+
     // Validar as saídas do banco.
+    if (!user) {
+      res.status(404).send("Usuário não encontrado.");
+    }
+
     // Responder/encerrar a requisição.
+    res.status(200).send({ id: user.id, nickname: user.nickname });
   } catch (error: any) {
     res.status(400).send({ message: error.message || error.sqlMessage });
   }
 };
 
-export default createUser;
+export default getUser;

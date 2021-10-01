@@ -2,6 +2,7 @@ import express, { Express } from "express";
 import cors from "cors";
 import { AddressInfo } from "net";
 import createUser from "./endpoints/createUser";
+import getUser from "./endpoints/getUser";
 
 const app: Express = express();
 
@@ -9,6 +10,8 @@ app.use(express.json());
 app.use(cors());
 
 app.post("/user", createUser);
+
+app.get("/user/:id", getUser);
 
 const server = app.listen(process.env.PORT || 3003, () => {
   if (server) {
