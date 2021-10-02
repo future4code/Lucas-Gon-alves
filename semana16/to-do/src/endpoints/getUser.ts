@@ -9,6 +9,7 @@ const getUser = async (req: Request, res: Response) => {
     // Validar as saídas do banco.
     if (!user) {
       res.status(404).send("Usuário não encontrado.");
+      return;
     }
 
     // Responder/encerrar a requisição.

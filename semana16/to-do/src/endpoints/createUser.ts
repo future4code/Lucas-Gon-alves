@@ -6,6 +6,7 @@ const createUser = async (req: Request, res: Response) => {
     // Validar entradas da requisição.
     if (!req.body.name || !req.body.nickname || !req.body.email) {
       res.status(400).send("Preencha todos os campos.");
+      return;
     }
 
     // Consultar o banco de dados.
